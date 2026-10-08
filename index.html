@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9f3fb">
+  <title>Sudoku — a little space to think</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="blue">
+  <main class="app">
+    <header class="topbar">
+      <div class="brand" aria-label="Sudoku home">
+        <div class="brand-mark" aria-hidden="true">▦</div>
+        <div><div class="brand-name">little sudoku</div><div class="brand-tagline">a little space to think</div></div>
+      </div>
+      <nav class="theme-picker" aria-label="Choose a pastel theme">
+        <span class="theme-label">YOUR COLOUR</span>
+        <button class="theme-option" type="button" data-theme-choice="blue" aria-pressed="true"><span class="swatch blue"></span>Blue</button>
+        <button class="theme-option" type="button" data-theme-choice="pink" aria-pressed="false"><span class="swatch pink"></span>Pink</button>
+        <button class="theme-option" type="button" data-theme-choice="yellow" aria-pressed="false"><span class="swatch yellow"></span>Yellow</button>
+        <button class="theme-option" type="button" data-theme-choice="mint" aria-pressed="false"><span class="swatch mint"></span>Mint</button>
+      </nav>
+    </header>
+
+    <div class="layout">
+      <section class="game-card" aria-label="Sudoku game">
+        <div class="game-heading">
+          <div>
+            <p class="eyebrow">A fresh puzzle, just for you</p>
+            <h1>Take a mindful minute.</h1>
+            <p class="subtitle">A little logic goes a long way.</p>
+          </div>
+          <label class="difficulty-wrap">
+            <span class="visually-hidden">Puzzle difficulty</span>
+            <select class="difficulty" id="difficulty" aria-label="Puzzle difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="board-shell">
+          <div class="board" id="board" role="grid" aria-label="Sudoku grid"></div>
+          <div class="pause-overlay" id="pauseOverlay" aria-live="polite"><strong>Take a breather</strong><span>Your puzzle is paused.</span></div>
+        </div>
+        <div class="status-line">
+          <span class="status-message" id="statusMessage" aria-live="polite"></span>
+          <span id="clueCount"></span>
+        </div>
+
+        <div class="controls-row">
+          <div class="action-group">
+            <button class="btn primary" id="newGame" type="button" title="Start a new puzzle">＋ <span>New game</span></button>
+            <button class="btn" id="undo" type="button" title="Undo your last move" aria-label="Undo last move">↶ <span>Undo</span></button>
+            <button class="btn" id="hint" type="button" title="Reveal the selected cell">✦ <span>Hint</span></button>
+          </div>
+          <div class="utility-group">
+            <span class="timer" aria-label="Elapsed time"><span class="timer-icon" aria-hidden="true">◷</span><span id="timer">00:00</span></span>
+            <button class="btn" id="pause" type="button" aria-pressed="false">Ⅱ <span>Pause</span></button>
+          </div>
+        </div>
+        <div class="controls-row secondary-controls">
+          <button class="btn" id="notesToggle" type="button" aria-pressed="false">✎ <span>Pencil notes</span></button>
+          <span class="hint-count" id="hintCount">0 hints used</span>
+        </div>
+        <div class="number-pad" id="numberPad" aria-label="Number pad"></div>
+        <p class="keyboard-tip">Tip: use <strong>1–9</strong> to fill · <strong>arrows</strong> to move · <strong>N</strong> for notes · <strong>H</strong> for a hint</p>
+      </section>
+
+      <aside class="tasks-card" aria-labelledby="tasksTitle">
+        <div class="tasks-heading">
+          <h2 id="tasksTitle">Daily / Basic Tasks</h2>
+          <span class="daily-badge">Today</span>
+        </div>
+        <p class="tasks-intro">Little milestones to keep you going. Progress saves on this device.</p>
+        <div class="task-list" id="taskList"></div>
+        <div class="tasks-footer"><span aria-hidden="true">✧</span><span><strong id="taskSummary">0 of 3 complete</strong> — every square is a small win.</span></div>
+      </aside>
+    </div>
+  </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
